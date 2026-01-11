@@ -115,7 +115,7 @@ class OFX
 
         // Extract offset from patterns like [+2:CEST] or [-5:EST]
         $offset = null;
-        if (preg_match('/\[(?<sign>[+-])(?<hh>\d{1,2})(?::[A-Z]{2,5})?\]/', $dateString, $matches)) {
+        if (preg_match('/\[(?<sign>[+-]?)(?<hh>\d{1,2})(?::[A-Z]{2,5})?\]/', $dateString, $matches)) {
             $sign = $matches['sign'] === '-' ? '-' : '+';
             $hh = str_pad($matches['hh'], 2, '0', STR_PAD_LEFT);
             $offset = "{$sign}{$hh}:00";
